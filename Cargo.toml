@@ -1,0 +1,10 @@
+[package]
+name = "alchem-macros"
+version = "0.1.0"
+authors = ["Charlie Ozinga <ozchaz@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+
+[lib]
+proc-macro = true
