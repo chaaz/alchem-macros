@@ -1,7 +1,7 @@
 //! Simple native_fn testing.
 
 use alchem::collapsed::CollapsedInfo;
-use alchem::value::{Globals, MorphStatus, NativeInfo, NoCustom, Type, Value, CustomType};
+use alchem::value::{CustomType, Globals, MorphStatus, NativeInfo, NoCustom, Type, Value};
 use alchem::vm::Runner;
 use alchem_macros::{native_fn, native_tfn};
 
