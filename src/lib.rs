@@ -103,6 +103,7 @@ pub fn native_tfn(_attr: TokenStream, item: TokenStream) -> TokenStream {
   let name = &sig.ident;
   let mut inputs = sig.inputs.iter();
   let arg1 = inputs.next().unwrap();
+  let arg2 = inputs.next().unwrap();
   let arg3 = inputs.next().unwrap();
   let (arg3_i, arg3_t) = match arg3 {
     FnArg::Receiver(_) => panic!("Unexpected receiver argument."),
@@ -124,7 +125,7 @@ pub fn native_tfn(_attr: TokenStream, item: TokenStream) -> TokenStream {
   let block = &func.block;
 
   let result = quote! {
-    #(#attrs)* #vis fn #name #new_generics (#arg1, #arg3_i: &'r #arg3_t) ->
+    #(#attrs)* #vis fn #name #new_generics (#arg1, #arg2, #arg3_i: &'r #arg3_t) ->
     std::pin::Pin<std::boxed::Box<dyn std::future::Future<Output = #output> + std::marker::Send + 'r>>
     {
       std::boxed::Box::pin( async move #block )
